@@ -6,6 +6,13 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 import sys
+import pygame
+
+# Music
+pygame.init()
+pygame.mixer.init()
+sounda= pygame.mixer.Sound("WJbeat.mp3")
+sounda.play()
 
 # Settings
 # Start Window

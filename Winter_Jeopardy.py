@@ -5,6 +5,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
+import sys
 
 # Settings
 # Start Window
@@ -131,7 +132,7 @@ def open_question(row, col, x, y):
               "This sport uses the force of Flotation."],
              ["This set of letters was written by the same author behind The Lord of The Rings.",
               "This movie’s Christmas soundtrack won Best Musical Album for Children\nat the 50th Grammy Awards.",
-              "During Hibernation, bears can go this many days without food and water (multiple of 10).",
+              "During Hibernation, bears can go this many days without food and water \n(multiple of 10).",
               "The century in which the term X-mas was invented.",
               "Snowboarding was first introduced in this year’s Winter Olympics."]]
 
@@ -330,7 +331,7 @@ def image_replacement(score1, score2):
         if score1 > score2:
             win(1, score1, score2)
         else:
-            win(2, score1, score2)
+            win(2, score1, score2)   
     else:
         tree1.grid_forget()
         tree2.grid_forget()
@@ -342,6 +343,7 @@ def image_replacement(score1, score2):
 def win(team, score1, score2):
     # Closes main screen and opens winner screen
     global top
+    top.withdraw()
     top.destroy()
     winner_screen = Toplevel()
     winner_screen.resizable(False, False)
@@ -354,10 +356,18 @@ def win(team, score1, score2):
     winner1 = ImageTk.PhotoImage(Image.open("Winners/Winner_1.png"))
     winner2 = ImageTk.PhotoImage(Image.open("Winners/Winner_2.png"))
     if team == 1:
-        winner1lbl = Label(winner_screen, image=winner1).pack()
+        winner1lbl = Label(winner_screen, image=winner1)
+        winner1lbl.grid(row=0, column=0, rowspan=5)
     else:
-        winner2lbl = Label(winner_screen, image=winner2).pack()
+        winner2lbl = Label(winner_screen, image=winner2)
+        winner2lbl.grid(row=0, column=0, rowspan=5)
 
+    exit_button = Button(winner_screen, text="EXIT GAME", command=close, padx=50, pady=50).grid(row=4, column=0)
+    
+
+def close():
+    # Fully closes the game
+    root.destroy()
 
 # Start Screen Background
 start_screenimg = ImageTk.PhotoImage(Image.open("Backgrounds/StartScreen.png"))
@@ -366,7 +376,6 @@ start_bg = Label(image=start_screenimg).grid(row=0, column=0, rowspan=2, columns
 # Start screen buttons
 start_button = Button(root, text="START", padx=100, pady=50, command=start_game).grid(row=0, column=1)
 instructions_button = Button(root, text="INSTRUCTIONS", padx=100, pady=50, command=open_instructions).grid(row=1, column=1)
-
 
 
 mainloop()

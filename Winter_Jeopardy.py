@@ -12,12 +12,14 @@ root = Tk()
 root.title("Winter Jeopardy")
 root.resizable(False, False)
 root.iconbitmap("WJ.ico")
+root.attributes("-topmost", True)
 
 # Game Window
 top = Toplevel()
 top.withdraw()
 top.resizable(False, False)
 top.iconbitmap("WJ.ico")
+top.attributes("-topmost", True)
 
 # Team Scores
 global team1_score
@@ -32,6 +34,7 @@ def open_instructions():
     global instructions
     instructions = Toplevel()
     instructions.iconbitmap("WJ.ico")
+    instructions.attributes("-topmost", True)
     root.withdraw()
     instructionslbl = Label(instructions, text="To enter the Jeopardy game, press the “start” button. Organize players into Team 1 and Team 2; \nteams are recommended, but not limited to be between 1-10 players each.\nTo win, one team must collect at least 30 ornaments on their tree before the other. \nTeams obtain ornaments by alternately pressing the button to a corresponding winter topic and an ornament quantity, \nresponding with the appropriate question to the answer revealed. \n(Response must be given in question format, ex. “What is Tennis?” NOT “Tennis”.) \nIf a team is unable to decide on a response, or the response is incorrect, the opposing team claims their points. \nA volunteer host player may press a team’s button to distribute points accordingly. \nAs you descend the table, the ornament value increases, but so does the trivia difficulty; choose wisely! \nYou will know your team has won when the end screen appears, congratulating the winning team. \nThis Winter Jeopardy is a great outlet to enjoy a virtual challenge with your friends on a cold day. \nGrab your hot chocolate, and get ready for a festive race!")
     instructionslbl.pack()
@@ -142,6 +145,7 @@ def open_question(row, col, x, y):
     question_screen = Toplevel()
     question_screen.resizable(False, False)
     question_screen.iconbitmap("WJ.ico")
+    question_screen.attributes("-topmost", True)
     top.withdraw()
 
     # define font
@@ -342,6 +346,7 @@ def win(team, score1, score2):
     winner_screen = Toplevel()
     winner_screen.resizable(False, False)
     winner_screen.iconbitmap("WJ.ico")
+    winner_screen.attributes("-topmost", True)
 
     # Winner images
     global winner1

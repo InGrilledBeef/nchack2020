@@ -351,7 +351,7 @@ def win(team, score1, score2):
     if team == 1:
         winner1lbl = Label(winner_screen, image=winner1).pack()
     else:
-        winner2lbl = Label(winner_screen, image=winner1).pack()
+        winner2lbl = Label(winner_screen, image=winner2).pack()
 
 
 # Start Screen Background

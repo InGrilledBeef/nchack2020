@@ -1,5 +1,5 @@
 # Date: 2020-12-28
-# Author: Ingrid and Nusha
+# Authors: Ingrid and Nusha
 # Purpose: Winter themed Jeopardy game for the 2020 NCHACK hackathon
 
 from tkinter import *

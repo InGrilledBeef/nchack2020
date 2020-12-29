@@ -128,7 +128,7 @@ def open_question(row, col, x, y):
               "This sport uses the force of Flotation."],
              ["This set of letters was written by the same author behind The Lord of The Rings.",
               "This movie’s Christmas soundtrack won Best Musical Album for Children\nat the 50th Grammy Awards.",
-              "During Hibernation, bears can go this many days without food and water.",
+              "During Hibernation, bears can go this many days without food and water (multiple of 10).",
               "The century in which the term X-mas was invented.",
               "Snowboarding was first introduced in this year’s Winter Olympics."]]
 

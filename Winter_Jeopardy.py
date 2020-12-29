@@ -11,11 +11,13 @@ import tkinter.font as font
 root = Tk()
 root.title("Winter Jeopardy")
 root.resizable(False, False)
+root.iconbitmap("WJ.ico")
 
 # Game Window
 top = Toplevel()
 top.withdraw()
 top.resizable(False, False)
+top.iconbitmap("WJ.ico")
 
 # Team Scores
 global team1_score
@@ -29,7 +31,10 @@ def open_instructions():
     # opens game instructions
     global instructions
     instructions = Toplevel()
+    instructions.iconbitmap("WJ.ico")
     root.withdraw()
+    instructionslbl = Label(instructions, text="To enter the Jeopardy game, press the “start” button. Organize players into Team 1 and Team 2; \nteams are recommended, but not limited to be between 1-10 players each.\nTo win, one team must collect at least 30 ornaments on their tree before the other. \nTeams obtain ornaments by alternately pressing the button to a corresponding winter topic and an ornament quantity, \nresponding with the appropriate question to the answer revealed. \n(Response must be given in question format, ex. “What is Tennis?” NOT “Tennis”.) \nIf a team is unable to decide on a response, or the response is incorrect, the opposing team claims their points. \nA volunteer host player may press a team’s button to distribute points accordingly. \nAs you descend the table, the ornament value increases, but so does the trivia difficulty; choose wisely! \nYou will know your team has won when the end screen appears, congratulating the winning team. \nThis Winter Jeopardy is a great outlet to enjoy a virtual challenge with your friends on a cold day. \nGrab your hot chocolate, and get ready for a festive race!")
+    instructionslbl.pack()
     go_back = Button(instructions, text="GO BACK TO START SCREEN", command=start_screen).pack()
     
 
@@ -47,7 +52,7 @@ def start_game():
     root.withdraw()
     board_img = ImageTk.PhotoImage(Image.open("Backgrounds/JeopardyBoard.png"))
     board_bg = Label(top, image=board_img).grid(row=0, column=0, rowspan=6, columnspan=5)
-    frames()
+    image_replacement(0, 0)
     game_buttons()
     
 
@@ -101,31 +106,31 @@ def open_question(row, col, x, y):
     # Opens the question screen
     
     # Questions
-    questions = [["Actor who played Grinch in the 2000 hit: How the Grinch Stole Christmas",
+    questions = [["Actor who played Grinch in the 2000 hit: How the Grinch Stole Christmas.",
               "This artist makes $2m a year from her hit christmas song.",
-              "Using three snowballs and decorations, this figure can be made at home.",
-              "How many days of Kwanzaa are there? (Number)",
-              "Canadian Winter sport"],
-             ["Name the movie: a couple who plans to go on vacation for Christmas rush to organize a party when they discover their daughter is coming home for the holidays",
-              "The year the song Jingle Bell Rock was originally published (ending in 0)",
-              "Which is more popular for gift purchasing: Black Friday or Cyber Monday?",
-              "Name of goals set in place by individuals for the New Year’s",
-              "A turn in figure skating that resembles an infinity sign"],
-             ["The author of A Christmas Carol",
-              "George Micheal (Wham!) sang this song in 1985",
-              "Which continent is best known for celebrating Christmas in the warm?",
-              "Which Winter Holiday is also known as “ the Festival of Lights “ ?",
-              "Form of skiing where skiers travel across a flat surface"],
-             ["Buddy the Elf’s father’s first name in Elf",
-              "Finish the lyrics.\n\nThe party's on\nThe feelin's here\nThat only comes\nThis time of year",
-              "This device is used to create artificial snow",
-              "Which century did caroling become a Christmas tradition?",
+              "Using three snowballs and decorations, this figure can be made outdoors.",
+              "The number of days of Kwanzaa.",
+              "A Canadian Winter sport."],
+             ["A movie: a couple who plans to go on vacation for Christmas rush to organize a party\nwhen they discover their daughter is coming home for the holidays.",
+              "The year the song Jingle Bell Rock was originally published (ending in 0).",
+              "The more popular date for gift purchasing between: Black Friday or Cyber Monday.",
+              "Name of goals set in place by individuals for the New Year’s.",
+              "A turn in figure skating that resembles an infinity sign."],
+             ["The author of A Christmas Carol.",
+              "George Micheal (Wham!) sang this song in 1985.",
+              "The continent best known for celebrating Christmas in the warm.",
+              "Winter Holiday also known as “the Festival of Lights”.",
+              "The form of skiing where skiers travel across a flat surface."],
+             ["Buddy the Elf’s father’s first name in Elf.",
+              "The final lyric:\n\nThe party's on\nThe feelin's here\nThat only comes\nThis time of year\n………………",
+              "This device is used to create artificial snow.",
+              "The century in which caroling became a Christmas tradition.",
               "This sport uses the force of Flotation."],
-             ["This set of letters was written by the same author behind The Lord of The Rings",
-              "This movie’s Christmas soundtrack won Best Musical Album for Children at the 50th Grammy Awards.",
+             ["This set of letters was written by the same author behind The Lord of The Rings.",
+              "This movie’s Christmas soundtrack won Best Musical Album for Children\nat the 50th Grammy Awards.",
               "During Hibernation, bears can go this many days without food and water.",
-              "In what century was the term X-mas invented?",
-              "Snowboarding was first introduced in this year’s Winter Olympics"]]
+              "The century in which the term X-mas was invented.",
+              "Snowboarding was first introduced in this year’s Winter Olympics."]]
 
     global posx
     global posy
@@ -136,6 +141,7 @@ def open_question(row, col, x, y):
     global question_screen
     question_screen = Toplevel()
     question_screen.resizable(False, False)
+    question_screen.iconbitmap("WJ.ico")
     top.withdraw()
 
     # define font
@@ -157,11 +163,11 @@ def open_question(row, col, x, y):
 def show_answer(row, col):
     # Reveals answer
     # Answer List
-    answers = [["Jim Carrey", "Mariah Carey", "Snowman.", "Seven", "Hockey"],
-           ["Christmas with the Kranks", "1970", "Black Friday", "Resolution/s", "figure eight"],
-           ["Charles Dickens", "Last Christmas", "Australia/Oceania", "Hanukkah", "Cross-country skiing"],
-           ["Walter", "Simply having a wonderful Christmas time", "Snow cannon", "13th century", "snowshoeing"],
-           ["The Father Christmas Letters", "A Green And Red Christmas - The Muppets", "240", "16th century", "1998"]]
+    answers = [["Who is Jim Carrey?", "Who is Mariah Carey?", "What is a Snowman?", "What is 7?", "What is Hockey?"],
+           ["What is Christmas with the Kranks?", "When is 1970?", "What is Black Friday?", "What are resolutions?", "What is a figure eight?"],
+           ["Who is Charles Dickens?", "What is Last Christmas?", "What is Australia/Oceania?", "What is Hanukkah?", "What is Cross-country skiing?"],
+           ["Who is Walter?", "What is Simply having a wonderful Christmas time?", "What is a Snow cannon?", "When is the 13th century?", "What is snowshoeing?"],
+           ["What are the Father Christmas Letters?", "What is A Green And Red Christmas - The Muppets?", "What is 240?", "When is the 16th century?", "When is 1998?"]]
 
     global question_screen
     global reveal_answer
@@ -202,7 +208,7 @@ def points(team, row, col):
 
     for r in range(5):
         for c in range(5):
-            score[row].append(r+1)
+            score[r].append(r+1)
 
     # Awards points accordingly
     if team == 1:
@@ -210,6 +216,7 @@ def points(team, row, col):
     elif team == 2:
         team2_score += score[row][col]
 
+    image_replacement(team1_score, team2_score)
     return_board(row, col)
 
 def return_board(row, col):
@@ -227,7 +234,8 @@ def return_board(row, col):
     else:
         button_list[row][col] = Button(top, state=DISABLED, padx=56, pady=27, text = str(row+1)+ " ORNAMENTS").place(x=posx, y=posy)
 
-def frames():
+
+def image_replacement(score1, score2):
     global top
     # Frames
     frame1 = LabelFrame(top, text = "Team 1", padx=10, pady=10)  # Inside
@@ -235,22 +243,115 @@ def frames():
     frame2 = LabelFrame(top, text = "Team 2", padx=10, pady=10)  # Inside
     frame2.grid(row=1, column=6, padx=10, pady=10)  # Outside
 
-    # Placing image of tree
     global tree_img
-    tree_img = ImageTk.PhotoImage(Image.open("Tree/1i.png"))
-    tree1 = Label(frame1, image=tree_img).grid(row=0, column=0)
-    tree2 = Label(frame2, image=tree_img).grid(row=0, column=0)
+    global my_img1
+    global my_img2
+    global my_img3
+    global my_img4
+    global my_img5
+    global my_img6
+    global my_img7
+    global my_img8
+    global my_img9
+    global my_img10
+    global my_img11
+    global my_img12
+    global my_img13
+    global my_img14
+    global my_img15
+    global my_img16
+    global my_img17
+    global my_img18
+    global my_img19
+    global my_img20
+    global my_img21
+    global my_img22
+    global my_img23
+    global my_img24
+    global my_img25
+    global my_img26
+    global my_img27
+    global my_img28
+    global my_img29
+    global my_img30
 
-def image_replacement():
+
+    tree_img = ImageTk.PhotoImage(Image.open("Tree/1i.png"))
     my_img1 = ImageTk.PhotoImage(Image.open("Tree/2i.png"))
     my_img2 = ImageTk.PhotoImage(Image.open("Tree/3i.png"))
     my_img3 = ImageTk.PhotoImage(Image.open("Tree/4i.png"))
     my_img4 = ImageTk.PhotoImage(Image.open("Tree/5i.png"))
     my_img5 = ImageTk.PhotoImage(Image.open("Tree/6i.png"))
     my_img6 = ImageTk.PhotoImage(Image.open("Tree/7i.png"))
+    my_img7 = ImageTk.PhotoImage(Image.open("Tree/8i.png"))
+    my_img8 = ImageTk.PhotoImage(Image.open("Tree/9i.png"))
+    my_img9 = ImageTk.PhotoImage(Image.open("Tree/10i.png"))
+    my_img10 = ImageTk.PhotoImage(Image.open("Tree/11i.png"))
+    my_img11 = ImageTk.PhotoImage(Image.open("Tree/12i.png"))
+    my_img12 = ImageTk.PhotoImage(Image.open("Tree/13i.png"))
+    my_img13 = ImageTk.PhotoImage(Image.open("Tree/14i.png"))
+    my_img14 = ImageTk.PhotoImage(Image.open("Tree/15i.png"))
+    my_img15 = ImageTk.PhotoImage(Image.open("Tree/16i.png"))
+    my_img16 = ImageTk.PhotoImage(Image.open("Tree/17i.png"))
+    my_img17 = ImageTk.PhotoImage(Image.open("Tree/18i.png"))
+    my_img18 = ImageTk.PhotoImage(Image.open("Tree/19i.png"))
+    my_img19 = ImageTk.PhotoImage(Image.open("Tree/20i.png"))
+    my_img20 = ImageTk.PhotoImage(Image.open("Tree/21i.png"))
+    my_img21 = ImageTk.PhotoImage(Image.open("Tree/22i.png"))
+    my_img22 = ImageTk.PhotoImage(Image.open("Tree/23i.png"))
+    my_img23 = ImageTk.PhotoImage(Image.open("Tree/24i.png"))
+    my_img24 = ImageTk.PhotoImage(Image.open("Tree/25i.png"))
+    my_img25 = ImageTk.PhotoImage(Image.open("Tree/26i.png"))
+    my_img26 = ImageTk.PhotoImage(Image.open("Tree/27i.png"))
+    my_img27 = ImageTk.PhotoImage(Image.open("Tree/28i.png"))
+    my_img28 = ImageTk.PhotoImage(Image.open("Tree/29i.png"))
+    my_img29 = ImageTk.PhotoImage(Image.open("Tree/30i.png"))
+    my_img30 = ImageTk.PhotoImage(Image.open("Tree/31i.png"))
 
-    # Image list exluding starting image
-    image_list = [my_img1, my_img2, my_img3, my_img4, my_img5, my_img6]
+    # Image list
+    image_list = [tree_img, my_img1, my_img2, my_img3, my_img4, my_img5, my_img6, my_img7, my_img8, my_img9, my_img10, my_img11, my_img12,
+                  my_img13, my_img14, my_img15, my_img16, my_img17, my_img18, my_img19, my_img20, my_img21, my_img22, my_img23,
+                  my_img24, my_img25, my_img26, my_img27, my_img28, my_img29, my_img30]
+
+    tree1 = Label(frame1, image=tree_img)
+    tree2 = Label(frame2, image=tree_img)
+
+    # Placing image of tree
+    if score1 == 0 and score2 == 0:
+        tree1.grid(row=0, column=0)
+        tree2.grid(row=0, column=0)
+
+    # If a team's score is greater than 30, they win
+    if score1 >= 30 or score2 >= 30:
+        if score1 > score2:
+            win(1, score1, score2)
+        else:
+            win(2, score1, score2)
+    else:
+        tree1.grid_forget()
+        tree2.grid_forget()
+        tree1 = Label(frame1, image=image_list[score1])
+        tree2 = Label(frame2, image=image_list[score2])
+        tree1.grid(row=0, column=0)
+        tree2.grid(row=0, column=0)
+
+def win(team, score1, score2):
+    # Closes main screen and opens winner screen
+    global top
+    top.destroy()
+    winner_screen = Toplevel()
+    winner_screen.resizable(False, False)
+    winner_screen.iconbitmap("WJ.ico")
+
+    # Winner images
+    global winner1
+    global winner2
+    winner1 = ImageTk.PhotoImage(Image.open("Winners/Winner_1.png"))
+    winner2 = ImageTk.PhotoImage(Image.open("Winners/Winner_2.png"))
+    if team == 1:
+        winner1lbl = Label(winner_screen, image=winner1).pack()
+    else:
+        winner2lbl = Label(winner_screen, image=winner1).pack()
 
 
 # Start Screen Background

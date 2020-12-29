@@ -4,7 +4,7 @@ Winter_Jeopardy is a Python file that runs a winter-themed Jeopardy game through
 
 ### Installation
 
-Install Python3. Add Python to PATH, download all files ensure they remain in their respective folders with their exact names. Install pillow by typing pip install pillow into command prompt. Open the in text editor and run module.
+Install Python3. Add Python to PATH, download all files and ensure they remain in their respective folders with their exact names. Install pillow by typing "pip install pillow" into command prompt. Open the in text editor and run module.
 
 ## Built With
 

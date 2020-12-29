@@ -343,7 +343,6 @@ def image_replacement(score1, score2):
 def win(team, score1, score2):
     # Closes main screen and opens winner screen
     global top
-    top.withdraw()
     top.destroy()
     winner_screen = Toplevel()
     winner_screen.resizable(False, False)

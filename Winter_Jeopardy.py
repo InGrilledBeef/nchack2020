@@ -1,6 +1,8 @@
 # Date: 2020-12-29
 # Authors: Ingrid and Nusha
-# Purpose: Winter themed Jeopardy game for the 2020 NCHACK hackathon
+""" Purpose: Winter themed Jeopardy game for the 2020 NCHACK hackathon
+    Jeopardy thinking music…. but it’s Christmas — ThatDapperMusician - Background music used
+"""
 
 from tkinter import *
 from PIL import ImageTk, Image
@@ -333,12 +335,14 @@ def image_replacement(score1, score2):
         tree1.grid(row=0, column=0)
         tree2.grid(row=0, column=0)
 
+    
     # If a team's score is greater than 30, they win
     if score1 >= 30 or score2 >= 30:
         if score1 > score2:
             win(1, score1, score2)
         else:
-            win(2, score1, score2)   
+            win(2, score1, score2)
+        sys.exit()
     else:
         tree1.grid_forget()
         tree2.grid_forget()
@@ -349,8 +353,8 @@ def image_replacement(score1, score2):
 
 def win(team, score1, score2):
     # Closes main screen and opens winner screen
-    global top
-    top.destroy()
+    global question_screen
+    question_screen.destroy()
     winner_screen = Toplevel()
     winner_screen.resizable(False, False)
     winner_screen.iconbitmap("WJ.ico")
@@ -374,6 +378,7 @@ def win(team, score1, score2):
 def close():
     # Fully closes the game
     root.destroy()
+    sys.exit()
 
 # Start Screen Background
 start_screenimg = ImageTk.PhotoImage(Image.open("Backgrounds/StartScreen.png"))

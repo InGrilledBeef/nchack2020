@@ -7,6 +7,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
+from tkinter import messagebox
 import sys
 import pygame
 
@@ -379,6 +380,13 @@ def close():
     # Fully closes the game
     root.destroy()
     sys.exit()
+
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
+top.protocol("WM_DELETE_WINDOW", on_closing)
 
 # Start Screen Background
 start_screenimg = ImageTk.PhotoImage(Image.open("Backgrounds/StartScreen.png"))

@@ -50,7 +50,7 @@ def open_instructions():
     instructionslbl = Label(instructions, text="To enter the Jeopardy game, press the “start” button. Organize players into Team 1 and Team 2; \nteams are recommended, but not limited to be between 1-10 players each.\nTo win, one team must collect at least 30 ornaments on their tree before the other. \nTeams obtain ornaments by alternately pressing the button to a corresponding winter topic and an ornament quantity, \nresponding with the appropriate question to the answer revealed. \n(Response must be given in question format, ex. “What is Tennis?” NOT “Tennis”.) \nIf a team is unable to decide on a response, or the response is incorrect, the opposing team claims their points. \nA volunteer host player may press a team’s button to distribute points accordingly. \nAs you descend the table, the ornament value increases, but so does the trivia difficulty; choose wisely! \nYou will know your team has won when the end screen appears, congratulating the winning team. \nThis Winter Jeopardy is a great outlet to enjoy a virtual challenge with your friends on a cold day. \nGrab your hot chocolate, and get ready for a festive race!")
     instructionslbl.pack()
     go_back = Button(instructions, text="GO BACK TO START SCREEN", command=start_screen).pack()
-    
+    instructions.protocol("WM_DELETE_WINDOW", on_closing)
 
 def start_screen():
     # Opens start
@@ -174,6 +174,8 @@ def open_question(row, col, x, y):
     reveal_answer = Button(question_screen, text="Reveal Answer", command=lambda: show_answer(row, col))
     reveal_answer['font'] = myFont1
     reveal_answer.grid(row=1, column=1)
+
+    question_screen.protocol("WM_DELETE_WINDOW", on_closing)
     
 def show_answer(row, col):
     # Reveals answer
@@ -374,7 +376,7 @@ def win(team, score1, score2):
         winner2lbl.grid(row=0, column=0, rowspan=5)
 
     exit_button = Button(winner_screen, text="EXIT GAME", command=close, padx=50, pady=50).grid(row=4, column=0)
-    
+    winner_screen.protocol("WM_DELETE_WINDOW", on_closing)
 
 def close():
     # Fully closes the game

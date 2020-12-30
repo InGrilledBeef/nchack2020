@@ -18,3 +18,7 @@ Winter_Jeopardy is a Python file that runs a winter-themed Jeopardy game through
 ## Authors
 
 * Ingrid Qin and Nusha Moosavipour
+
+## Featured
+
+* Jeopardy thinking music…. but it’s Christmas — ThatDapperMusician - Background music used
